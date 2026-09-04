@@ -90,4 +90,412 @@
         .hero-content { position: relative; z-index: 1; text-align: center; padding: 0 2rem; max-width: 900px; }
         .hero-eyebrow {
             display: inline-flex; align-items: center; gap: 0.6rem;
-            border: 1px solid
+            border: 1px solid rgba(201,169,110,0.3); padding: 0.5rem 1.2rem;
+            border-radius: 100px; font-size: 0.8rem; color: var(--accent);
+            margin-bottom: 2rem; letter-spacing: 0.1em; text-transform: uppercase;
+            backdrop-filter: blur(10px); background: rgba(201,169,110,0.05);
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 1.05;
+            margin-bottom: 1.5rem; font-weight: 600; letter-spacing: -0.02em;
+        }
+        .hero h1 em { color: var(--accent); font-style: italic; }
+        .hero p {
+            font-size: 1.15rem; color: var(--text-muted); max-width: 550px;
+            margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7;
+        }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .scroll-indicator {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.1em;
+            text-transform: uppercase; animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+        /* Section通用 */
+        section { padding: 7rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .eyebrow {
+            font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 1.2rem; font-weight: 600; display: block;
+        }
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; line-height: 1.1;
+        }
+        .section-header p { color: var(--text-muted); max-width: 550px; margin: 0 auto; font-size: 1.05rem; }
+
+        /* About */
+        .about-grid {
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center;
+        }
+        .about-images { position: relative; }
+        .about-img-main {
+            width: 100%; height: 500px; object-fit: cover; border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        .about-img-float {
+            position: absolute; bottom: -30px; right: -30px; width: 250px; height: 180px;
+            object-fit: cover; border-radius: 16px; border: 1px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .about-text h3 { font-size: 2.4rem; margin-bottom: 1.5rem; line-height: 1.15; }
+        .about-text h3 em { color: var(--accent); font-style: italic; }
+        .about-text p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8; }
+        .about-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .about-stat h4 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--accent); margin-bottom: 0.3rem; }
+        .about-stat span { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Menu Bento */
+        .menu-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .menu-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden; transition: all 0.4s ease;
+            position: relative;
+        }
+        .menu-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .menu-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+        .menu-card-img { width: 100%; height: 220px; object-fit: cover; }
+        .menu-card.featured .menu-card-img { height: 100%; }
+        .menu-card-body { padding: 1.8rem; }
+        .menu-card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem; }
+        .menu-card h4 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+        .menu-card .price { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--accent); font-weight: 600; }
+        .menu-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+        .menu-tag {
+            display: inline-block; background: var(--accent-dim); color: var(--accent);
+            padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.7rem;
+            font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+        }
+        .gallery-item {
+            position: relative; border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--border); cursor: pointer;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(5,5,5,0.6) 0%, transparent 50%);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item.wide { grid-column: span 2; }
+
+        /* Reservation */
+        .reservation-section { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .reservation-wrap {
+            max-width: 800px; margin: 0 auto; text-align: center;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 24px; padding: 4rem; position: relative; overflow: hidden;
+        }
+        .reservation-wrap::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 60%);
+        }
+        .reservation-wrap > * { position: relative; z-index: 1; }
+        .reservation-wrap h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .reservation-wrap > p { color: var(--text-muted); margin-bottom: 2.5rem; }
+        .reservation-form {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+        }
+        .reservation-form .full { grid-column: 1 / -1; }
+        .reservation-form input, .reservation-form select, .reservation-form textarea {
+            background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+            padding: 1rem 1.2rem; color: var(--text); font-family: inherit; font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .reservation-form input:focus, .reservation-form select:focus, .reservation-form textarea:focus {
+            outline: none; border-color: var(--accent);
+        }
+        .reservation-form input::placeholder { color: var(--text-dim); }
+        .reservation-form button { margin-top: 0.5rem; width: 100%; justify-content: center; font-size: 1rem; padding: 1rem; }
+
+        /* Footer */
+        footer { padding: 5rem 2rem 2rem; border-top: 1px solid var(--border); }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem;
+        }
+        .footer-brand .logo { margin-bottom: 1rem; display: inline-block; }
+        .footer-brand p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        .footer-col h5 { color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; font-weight: 600; }
+        .footer-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 0.8rem; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto; padding-top: 2rem;
+            border-top: 1px solid var(--border); display: flex; justify-content: space-between;
+            color: var(--text-dim); font-size: 0.85rem;
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            header { padding: 1rem 1.5rem; }
+            header.scrolled { padding: 0.8rem 1.5rem; }
+            nav { display: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img-float { display: none; }
+            .menu-bento { grid-template-columns: 1fr; }
+            .menu-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.tall { grid-row: span 1; }
+            .gallery-item.wide { grid-column: span 1; }
+            .reservation-wrap { padding: 2rem; }
+            .reservation-form { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .about-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <a href="#" class="logo">Alma Brasa</a>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#menu">Carta</a>
+            <a href="#galeria">Galería</a>
+            <a href="#reservas">Reservas</a>
+        </nav>
+        <a href="#reservas" class="btn">Reservar mesa</a>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">✦ Cocina de autor desde 2015</div>
+            <h1>Donde el fuego <em>encuentra</em> el alma</h1>
+            <p>Recetas que nacen de la brasa, técnicas de vanguardia y una obsesión por el producto. En Alma Brasa cada plato es una historia que se cuenta en el paladar.</p>
+            <div class="hero-buttons">
+                <a href="#reservas" class="btn">Reservar ahora →</a>
+                <a href="#menu" class="btn btn-outline">Ver la carta</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <div class="about-grid reveal">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" alt="Chef cocinando" class="about-img-main">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Plato gourmet" class="about-img-float">
+            </div>
+            <div class="about-text">
+                <span class="eyebrow">Nuestra Historia</span>
+                <h3>Tres generaciones, <em>una misma pasión</em></h3>
+                <p>Lo que empezó como una pequeña parrilla familiar en 2015 se ha convertido en un referente de la cocina a la brasa. No seguimos tendencias: perfeccionamos lo que ya funciona.</p>
+                <p>Cada ingrediente que entra por nuestra puerta ha sido seleccionado directamente de productores locales. La brasa de roble no es un método, es nuestra firma.</p>
+                <div class="about-stats">
+                    <div class="about-stat">
+                        <h4>9</h4>
+                        <span>Años de historia</span>
+                    </div>
+                    <div class="about-stat">
+                        <h4>4.9</h4>
+                        <span>Estrellas Google</span>
+                    </div>
+                    <div class="about-stat">
+                        <h4>12K</h4>
+                        <span>Clientes felices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="section-header reveal">
+            <span class="eyebrow">Nuestra Carta</span>
+            <h2>Sabores que no se olvidan</h2>
+            <p>Ingredientes de proximidad, técnicas tradicionales y ese punto de innovación que marca la diferencia.</p>
+        </div>
+        <div class="menu-bento">
+            <div class="menu-card featured reveal">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Tomahawk" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <div>
+                            <h4>Tomahawk de Buey</h4>
+                            <span style="color:var(--text-dim);font-size:0.85rem;">1.2kg para compartir</span>
+                        </div>
+                        <span class="price">85€</span>
+                    </div>
+                    <p>Brasa de roble, maduración 45 días, sal en escamas y pimienta negra recién molida. Servido con patatas asadas al romero y pimiento del piquillo.</p>
+                    <span class="menu-tag">⭐ Plato estrella</span>
+                </div>
+            </div>
+            <div class="menu-card reveal">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Pizza" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Pulpo a la Brasa</h4>
+                        <span class="price">24€</span>
+                    </div>
+                    <p>Pulpo gallego, cachelos, pimentón de la Vera y aceite de oliva arbequina.</p>
+                    <span class="menu-tag">Favorito</span>
+                </div>
+            </div>
+            <div class="menu-card reveal">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80" alt="Ensalada" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Burrata & Trufa</h4>
+                        <span class="price">18€</span>
+                    </div>
+                    <p>Burrata fresca, carpaccio de trufa negra, rúcula silvestre y reducción de balsámico.</p>
+                </div>
+            </div>
+            <div class="menu-card reveal">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Salad" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Costillas BBQ</h4>
+                        <span class="price">22€</span>
+                    </div>
+                    <p>12 horas de cocción lenta, glaseado casero de bourbon y chips de boniato.</p>
+                </div>
+            </div>
+            <div class="menu-card reveal">
+                <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80" alt="Postre" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Tarta de Queso</h4>
+                        <span class="price">9€</span>
+                    </div>
+                    <p>Queso crema madurado, base de galleta y coulis de frutos rojos. Textura infinita.</p>
+                    <span class="menu-tag">Postre</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="section-header reveal">
+            <span class="eyebrow">Galería</span>
+            <h2>Un vistazo a nuestra cocina</h2>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Interior"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Comida"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="BBQ"></div>
+            <div class="gallery-item wide"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Plato"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80" alt="Postre"></div>
+            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="Cocina"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80" alt="Cóctel"></div>
+        </div>
+    </section>
+
+    <section class="reservation-section" id="reservas">
+        <div class="section-header reveal">
+            <span class="eyebrow">Reservas</span>
+            <h2>Reserva tu experiencia</h2>
+            <p>Completa el formulario y te confirmamos en menos de 30 minutos.</p>
+        </div>
+        <div class="reservation-wrap reveal">
+            <h2>Tu mesa te espera</h2>
+            <p>Para grupos de más de 8 personas o eventos privados, contáctanos directamente por teléfono.</p>
+            <form class="reservation-form" action="https://formspree.io/f/xnqevjdr" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" required>
+                <input type="email" name="email" placeholder="Email">
+                <input type="date" name="fecha" required>
+                <select name="personas" required>
+                    <option value="">Nº de personas</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                    <option value="6">6 personas</option>
+                    <option value="7+">7 o más</option>
+                </select>
+                <select name="hora" required>
+                    <option value="">Hora</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                    <option value="14:30">14:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                </select>
+                <textarea name="notas" placeholder="Alergias, ocasión especial..." rows="3" class="full"></textarea>
+                <button type="submit" class="btn full">Confirmar reserva →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="logo">Alma Brasa</span>
+                <p>Cocina de autor a la brasa. Donde cada plato cuenta una historia y cada visita se convierte en un recuerdo.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explorar</h5>
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#menu">Carta</a>
+                <a href="#galeria">Galería</a>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Cookies</a>
+            </div>
+            <div class="footer-col">
+                <h5>Contacto</h5>
+                <a href="#">📍 Calle Brasa 42, Madrid</a>
+                <a href="tel:+34900123456">📞 900 123 456</a>
+                <a href="mailto:hola@almabrasa.com">✉️ hola@almabrasa.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Alma Brasa. Todos los derechos reservados.</span>
+            <span>Diseñado por <strong style="color:var(--accent);">InnovaRed</strong></span>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
